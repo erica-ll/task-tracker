@@ -1,0 +1,106 @@
+.updateModalBackground{
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    top: 5%;
+    left: 0vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.updateModalContainer{
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color:#EDF1D6;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+
+.closeBtn{
+    display:flex;
+    justify-content: flex-end;
+}
+
+.closeBtn button{
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color:rgb(120, 120, 120);
+}
+
+.updateModalContainer .body{
+    left: 60%;
+    top: 50%; 
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    text-align: center;
+    color:#40513B;
+    font-weight: bold;
+}
+
+.updateModalContainer .body .inputName,
+.updateModalContainer .body .inputDescription{
+    padding-left: 10px;
+    font-size: 18px;
+    font-family: serif;
+    margin-bottom: 30px;
+}
+
+.updateModalContainer .body .inputName{
+    height: 35px;
+}
+
+.updateModalContainer .body .inputDescription{
+    height: 100px;
+}
+
+.updateModalContainer .footer{
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.updateModalContainer .footer #apply{
+    width: 150px;
+    height: 45px;
+    border: none;
+    background-color:#5b7054;
+    box-shadow: 2px 2px #40513B;
+    color:#EDF1D6;
+    font-family: serif;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.updateModalContainer .footer #deleteBtn{
+    box-shadow: 2px 2px #40513B;
+    width: 200px;
+    height: 45px;
+    margin-top: 40px;
+    border: none;
+    background-color:#609966;
+    color:#EDF1D6;
+    font-family: serif;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+

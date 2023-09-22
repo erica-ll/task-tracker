@@ -1,0 +1,181 @@
+html {background-color: #91bd89;}
+.App{
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family:serif;
+  background-color: #91bd89;
+}
+
+.App #title{
+  color:#EDF1D6;
+  text-shadow: 2.5px 2.5px #40513B;
+}
+
+.form{
+  background-color: #609966;
+  border: #EDF1D6;
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+  border-style: double;
+  width: 1000px;
+  border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.form input{
+  width: 300px;
+  height: 60px;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.form .header{
+  display: flex;
+  flex-direction: row;
+}
+
+.form .header #createModal,
+.form .header #showComplete{
+  width: 130px;
+  height: 40px;
+  margin: 20px;
+  margin-bottom: 40px;
+  background-color:#f2f5e3;
+  font-family:serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #40513B;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.card p{
+  margin: 10px;
+}
+
+.card{
+  width: 800px;
+  background-color: #f2f5e3;
+  height: 50px;
+  border: 2px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px #40513B;
+}
+
+#updateInput{
+  width: 150px;
+  height: 20px;
+}
+
+.card h1,
+.card p {
+  color: #40513B;
+  font-size: 18px;
+  display: inline;
+  float: left;
+  margin-left: 50px;
+}
+
+.card #startTimer,
+.card #updateBtn{
+  background-color:#FAF1E4;
+  color: #435334;
+  margin: 10px;
+  margin-right: 20px;
+  height: 30px;
+  float: right;
+  border-radius: 5px;
+}
+
+.card #checkBox{
+  height: 20px;
+  width: 40px;
+  cursor: pointer;
+  float: left;
+}
+
+.completeModalBackground{
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  top: 5%;
+  left: 0vw;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.completeModalContainer{
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  background-color:#EDF1D6;
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.completeModalContainer .title{
+  margin-bottom: 30px;
+  text-align:center; 
+  font-size: 30px;
+  color:#40513B;
+  text-shadow: 1px 1px rgba(0,0,0,0.35);
+}
+
+.closeBtn{
+  display:flex;
+  justify-content: flex-end;
+}
+
+.closeBtn button{
+  background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color:rgb(120, 120, 120);
+}
+
+.completeCard{
+  width: 400px;
+  background-color:#609966;
+  height: 50px;
+  border: 2px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  margin-left: 50px;
+  box-shadow:2px 2px #40513B;
+}
+
+.completeCard h1,
+.completeCard p {
+  color: #FAF1E4;
+  font-size: 18px;
+  display:inline;
+  margin:5px;
+}
+
+.completeCard #retrieveBtn{
+  background-color:#FAF1E4;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 1px #435334;
+  color: #435334;
+  font-family: serif;
+  margin: 10px;
+  clear:right;
+}
+
+#timeRecord{
+  margin-right: 30px;
+  float: right;
+}

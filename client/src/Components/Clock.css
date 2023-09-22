@@ -1,0 +1,87 @@
+.clockModalBackground{
+    width: 65vw;
+    height: 100vh;
+    background-color: transparent;
+    top: 5%;
+    left: 20%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.clockModalContainer{
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color:#EDF1D6;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+}
+
+.clockModalContainer .title{
+    display: inline-block;
+    text-align: center; 
+    font-size: 18px;
+    color:#40513B;
+    text-shadow: 1px 1px rgba(0,0,0,0.35);
+}
+
+.closeBtn{
+    display:flex;
+    justify-content: flex-end;
+}
+
+.closeBtn button{
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color:rgb(120, 120, 120);
+}
+
+.modalContainer .body{
+    left: 60%;
+    top: 50%; 
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    text-align: center;
+    color:#40513B;
+}
+
+.clockModalContainer .body .inputName{
+    height: 30px;
+}
+
+.clockModalContainer .body .inputDescription{
+    height: 100px;
+}
+
+.clockModalContainer .footer{
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clockModalContainer .footer button{
+    width: 150px;
+    height: 45px;
+    margin-bottom: 50px;
+    border: none;
+    background-color:#40513B;
+    color:#EDF1D6;
+    font-family: serif;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
