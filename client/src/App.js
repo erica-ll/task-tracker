@@ -6,7 +6,6 @@ import DeleteModal from './Components/DeleteModal';
 import UpdateModal from './Components/UpdateModal';
 import Clock from './Components/Clock';
 
-//TODO: create retrieve function that puts task back into the menu
 function App() {
   const[taskList, setTaskList] = useState([]);
   const[finishedList, setFinishedList] = useState([]);
@@ -17,7 +16,6 @@ function App() {
   const[selectedDelete, setSelectedDelete] = useState("empty");
   const[selectedUpdate, setSelectedUpdate] = useState("empty");
   const[selectedTimer, setSelectedTimer] = useState("empty");
-
   let timeTotal = 0;
 
   useEffect(()=>{
@@ -25,40 +23,10 @@ function App() {
       setTaskList(response.data);
     });
 
-    taskList.map(item=>{
-      timeTotal = (timeTotal + item.time);
-      console.log(item);
-      // console.log(timeTotal);
-      console.log(typeof item.time);
-    });
-    console.log(timeTotal);
-    finishedList.map(item=>{
-      console.log(typeof item.time);
-      timeTotal = (timeTotal + item.time);
-    });
-    console.log(timeTotal);
-  },[]);
-
-  useEffect(()=>{
     Axios.get('http://localhost:3001/api/completed/get').then((response)=>{
       setFinishedList(response.data);
     });
   },[]);
-
-  // useEffect(()=>{
-  //   taskList.map(item=>{
-  //     timeTotal = (timeTotal + item.time);
-  //     console.log(item.time);
-  //     // console.log(timeTotal);
-  //     console.log(typeof item.time);
-  //   });
-  //   console.log(timeTotal);
-  //   finishedList.map(item=>{
-  //     console.log(typeof item.time);
-  //     timeTotal = (timeTotal + item.time);
-  //   });
-  //   console.log(timeTotal);
-  // },[]);
 
   const updateList = (task)=>{
     setTaskList([...taskList, {
@@ -68,6 +36,7 @@ function App() {
       time: 0,
       isDone: task.isDone
     }]);
+    window.location.reload(false);
   };
 
   function removeFromList(task) {
@@ -85,7 +54,6 @@ function App() {
   }
 
   const handleFinish = (id)=>{
-    console.log(id)
     taskList.map(item =>{
       if(item.id == id){
         const temp = {
@@ -95,7 +63,6 @@ function App() {
           time: item.time,
           isDone: true
         };
-        console.log(temp);
         Axios.post('http://localhost:3001/api/completed/insert', temp)
         .then(response=>{
           console.log(response.data.value);
@@ -111,8 +78,6 @@ function App() {
         });
       }
     })
-    // Axios.delete(`http://localhost:3001/api/delete/${id}`);
-    // setTaskList(oldValues => oldValues.filter(item => item.id != id));
   }
 
 
@@ -120,27 +85,28 @@ function App() {
     finishedList.map(item =>{
       if(item.id == id){
         const temp = {
-          id: item.id, 
           taskName: item.taskName, 
           time: item.time,
           taskDescription: item.taskDescription,
           isDone: false
         };
-        Axios.post('http://localhost:3001/api/insert', temp)
-        .then(response=>{
-          setTaskList([...taskList, {
-            id: response.data, 
-            taskName: item.taskName, 
-            taskDescription: item.taskDescription,
-            time: item.time,
-            isDone: true
-          }]);
-
           Axios.delete(`http://localhost:3001/api/completed/delete/${id}`);
           setFinishedList(oldValues => oldValues.filter(item => item.id != id));
-        });
       }
     })
+  }
+
+  const calculateTime = ()=>{
+    taskList.map(item=>{
+      timeTotal = timeTotal + item.time;
+      console.log(item);
+      console.log(timeTotal);
+    });
+    finishedList.map(item=>{
+      timeTotal = timeTotal + item.time;
+      console.log(item);
+      console.log(timeTotal);
+      });
   }
 
 
@@ -149,9 +115,10 @@ function App() {
       <h1 id="title">
         TODO List
       </h1>
-      {/* <div>
-        <p>You have worked for {timeTotal} so far!</p>
-      </div> */}
+      <div>
+        {calculateTime()}
+        <p>You have worked for {("0" + Math.floor(timeTotal / 60)).slice(-2)}:{("0" + Math.floor(timeTotal % 60)).slice(-2)} so far!</p>
+      </div>
 
       <div className="form">
         <div className="header">
@@ -175,14 +142,14 @@ function App() {
                 <button onClick={()=>setOpenCompleteModal(false)}> X </button>
             </div>
             <h1 className='title'>Completed Tasks </h1>
-            {finishedList.slice(0,5).map((val)=>{
+            {finishedList.slice(-5).map((val)=>{
               return (
                 <div className="completeCard" key={val.id}>
-                  <h1>{val.taskName}:</h1> <p>{val.taskDescription}</p>
+                  <h1>{val.taskName}</h1> 
               <button id="retrieveBtn" onClick={()=>{
                 handleRetrieve(val.id);
               }}
-              >Retrieve</button>
+              >Delete</button>
               {selectedDelete == val.id && <DeleteModal id={val.id} name={val.taskName} closeModal={setSelectedDelete} updateList={removeFromList}
               />}
                   </div>
@@ -207,7 +174,7 @@ function App() {
               <button id="startTimer"
               onClick={()=>{
                 setSelectedTimer(val.id)}}>Start</button>
-                {selectedTimer == val.id && <Clock id={val.id} name={val.taskName} description={val.taskDescription} closeModal={setSelectedTimer} updateList={updateTaskInfo}
+                {selectedTimer == val.id && <Clock id={val.id} name = {val.taskName} description = {val.taskDescription} closeModal={setSelectedTimer} updateList={updateTaskInfo}
                 />}
               
               <p id="timeRecord">{("0" + Math.floor(val.time / 60)).slice(-2)}:{("0" + Math.floor(val.time % 60)).slice(-2)}</p>

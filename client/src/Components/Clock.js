@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Clock.css";
 import Axios from 'axios';
  
-function StopWatch(props) {
+function Clock(props) {
     const [time, setTime] = useState(0);
     const [now, setNow] = useState(null);
     const id = props.id;
@@ -22,6 +22,7 @@ function StopWatch(props) {
             });
             updateList({id:id, name:taskName, description:description, time: Math.floor((timePassed / 1000) % 60)+ response.data[0].time});
             closeModal("");
+            window.location.reload(false);
         });
         
     };
@@ -39,21 +40,23 @@ function StopWatch(props) {
     return (
         <div className="clockModalBackground">
             <div className="clockModalContainer">
-            <div className="closeBtn">
-                <button onClick={()=>closeModal("")}> X </button>
+            <div className="closeClockBtn">
+                <button onClick={()=>closeModal("")}> Give Up </button>
             </div>
-            <div className="timer">
-            <span className="digits">
-                {("0" + Math.floor((timePassed / 60000) % 60)).slice(-2)}:
-            </span>
-            <span className="digits">
-                {("0" + Math.floor((timePassed / 1000) % 60)).slice(-2)}
-            </span>
-        </div>
-            <button onClick={handleStop}>Stop</button>
+            <div className="clockBody">
+                <div className="timer">
+                <span className="digits">
+                    {("0" + Math.floor((timePassed / 60000) % 60)).slice(-2)} :{(" ")} 
+                </span>
+                <span className="digits">
+                    {("0" + Math.floor((timePassed / 1000) % 60)).slice(-2)}
+                </span>
+                </div>
+                <button id="stopBtn" onClick={handleStop}>Stop</button>
+            </div>
         </div>
         </div>
     );
 }
  
-export default StopWatch;
+export default Clock;

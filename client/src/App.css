@@ -162,6 +162,8 @@ html {background-color: #91bd89;}
   font-size: 18px;
   display:inline;
   margin:5px;
+  float: left;
+  margin-left: 20px;
 }
 
 .completeCard #retrieveBtn{
@@ -173,6 +175,7 @@ html {background-color: #91bd89;}
   font-family: serif;
   margin: 10px;
   clear:right;
+  float: right;
 }
 
 #timeRecord{

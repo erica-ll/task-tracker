@@ -22,6 +22,7 @@ function Modal(props) {
     Axios.post('http://localhost:3001/api/insert', {
       taskName: taskName, 
       taskDescription: description,
+      time: 0,
     }).then(response=>{
       setId(response.data);
     });

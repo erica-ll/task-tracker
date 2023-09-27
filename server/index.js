@@ -4,7 +4,6 @@ const mysql = require("mysql");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-// TODO: create a new table storing all the completed tasks
 const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
@@ -26,8 +25,12 @@ app.get('/api/get', (req, res)=>{
 app.post('/api/insert', (req, res)=>{
     const taskName = req.body.taskName;
     const taskDescription = req.body.taskDescription;
+    const time = req.body.time;
+    console.log(taskName)
+    console.log(taskDescription)
+    console.log(time)
     const sqlInsert = "INSERT INTO tasks (taskName, taskDescription, time) VALUES (?,?,?)"
-    db.query(sqlInsert, [taskName, taskDescription,0], (err,result)=>{
+    db.query(sqlInsert, [taskName, taskDescription,time], (err,result)=>{
         console.log(result.insertId);
         res.sendStatus(result.insertId);
     });
@@ -49,8 +52,6 @@ app.put('/api/update', (req, res)=>{
     const sqlUpdate = "UPDATE tasks SET taskName = ?, taskDescription = ? WHERE id = ?";
     db.query(sqlUpdate, [name, description, id], (err, result) => {
         if(err) console.log(err);
-        //console.log(name);
-        //console.log(description);
     });
 })
 
@@ -102,8 +103,9 @@ app.get('/api/completed/get', (req, res)=>{
 app.delete('/api/completed/delete/:key', (req, res)=>{
     console.log(req.params.key);
     const id = req.params.key;
+    //console.log(id);
     const sqlDelete = "DELETE FROM completed WHERE id = ?";
     db.query(sqlDelete, id, (err, result) => {
-        if(err) console.log(err);
+        //if(err) console.log(err);
     });
 })
