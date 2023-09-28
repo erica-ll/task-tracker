@@ -115,7 +115,7 @@ function App() {
       <h1 id="title">
         TODO List
       </h1>
-      <div>
+      <div className='totalMessage'>
         {calculateTime()}
         <p>You have worked for {("0" + Math.floor(timeTotal / 60)).slice(-2)}:{("0" + Math.floor(timeTotal % 60)).slice(-2)} so far!</p>
       </div>
