@@ -1,7 +1,7 @@
 # Task Manager & Time Tacker
 ## Table of Contents
   - [About](#about) 
-  - Installation & Setup
+  - [Installation & Setup](#installation&setup)
   - Function & User Instruction
   - What does the project look like?
 
