@@ -1,8 +1,8 @@
 # Task Manager & Time Tacker
 ## Table of Contents
   - [About](#about) 
-  - [Installation & Setup](#installation-&-setup)
-  - [Function & User Instruction](#function-&-user-instruction)
+  - [Installation & Setup](#installation--setup)
+  - [Function & User Instruction](#function--user-instruction)
   - [What does the project look like?](#what-does-the-project-look-like)
 
 ## About 
